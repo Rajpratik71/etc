@@ -1,5 +1,4 @@
 bash configuration and vim configuration
-=================
 
 vim configuration
 
@@ -43,3 +42,6 @@ prompt
 
 Keep the SSH session does not time out
 cat ServerAliveInterval 100 >> /etc/ssh/ssh_config
+Reset github locally saved username and password
+git remote remove origin
+git remote add origin git@github.com:wolfwzr/etc.git
