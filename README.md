@@ -1,64 +1,45 @@
-bash配置和vim配置
+bash configuration and vim configuration
 =================
 
-vim配置
--------
+vim configuration
 
-依赖工具：
-- Vundle插件
-- sdcv（命令行词典工具）
-- mkd_preview.sh 实现mkd文件预览功能
+Dependent Tools:
 
-bash配置
---------
+Vundle plugin
+sdcv (command line dictionary tool)
+mkd_preview.sh mkd file preview function
+bash configuration
 
+Instructions
 
-使用方法
---------
-
-```
 $ git clone git@github.com:wolfwzr/etc.git somedir
 $ cd somedir
 $ bash install.sh
-```
+Precautions
 
-注意事项
---------
-- Mark.vim 插件需要修改(autocmd!问题)，具体看 vundle.vimrc
-- 如果 autocmd 注册事件未响应时，使用 :autocmd {Event} 查看是否有对应注册，若没有，从以下几方面发现问题：
-    - autocmd 语句是否被执行
-    - autocmd 命令不指定组时使用的是默认组，检查是否哪里使用了autocmd!语句，该语句会先清空当前组的所以事件，可以使用 :verbose autocmd {Event} 来检查，或直接检查自己的配置或插件代码。
-    - 最好在自己的 Group 内进行 autocmd 以避免上述问题（同时还能避免重复注册），如：
-    ```
-    augroup wolfwzr_autocmd
-        au!
-        autocmd BufNew :echom "BufNew"
-    augroup END
-    ```
+Mark.vim plug-ins need to be modified (autocmd! Problem), see vundle.vimrc
+If the autocmd registration event does not respond, use: autocmd {Event} to see if there is a corresponding registration, if not, from the following found problems:
+autocmd statement is executed
+autocmd command does not specify the group is the default group, check if autocmd! statement where the statement will first empty the current group of events, you can use: verbose autocmd {Event} to check, or directly check your configuration or Plug-in code.
+It is best to autocmd in your own group to avoid the above problems (while avoiding double registration), such as:
+augroup wolfwzr_autocmd
+    au!
+    autocmd BufNew :echom "BufNew"
+augroup END
+To be functional
 
-待实现功能
-----------
+vim
+Ultisnap code block completion plug-in installed but still not clear usage
+Make Use of <Fn>
+Make Use of [a-z][0-9], 1
+bash
+There is doubt
 
-- vim
-    - 代码块补全插件Ultisnap安装了但还不清楚用法
-    - Make Use of <Fn> <S-Fn> \<Fn>
-    - Make Use of [a-z][0-9], <Leader>1
-- bash
+Why VIM can distinguish Alt + j and Alt + Shift + j, but can not distinguish between Ctrl + j and Ctrl + Shift + j?
+Set asm type handler set syntax = nasm no effect, even autocmd no effect, why
+autocmd FileType asm set syntax=nasm
+noft Search is still underline style(no effect in osx)
+prompt
 
-存在的疑问
-----------
-
-1. 为什么 VIM 能区别 Alt + j 和 Alt + Shift + j, 却不能区分 Ctrl +j 和 Ctrl + Shift + j ?
-2. 在asm类型处理函数里设置set syntax=nasm无效果，连autocmd也没效果，为什么
-    ```
-    autocmd FileType asm set syntax=nasm
-    ```
-3. noft Search is still underline style(no effect in osx)
-
-提示
-----
-
-1. 保持 SSH 会话不超时
-    ```
-    cat ServerAliveInterval 100 >> /etc/ssh/ssh_config
-    ```
+Keep the SSH session does not time out
+cat ServerAliveInterval 100 >> /etc/ssh/ssh_config
